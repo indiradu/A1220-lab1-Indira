@@ -23,6 +23,13 @@ def process_directory(dirpath):
         data = gpt.extract_receipt_info(image_b64)
         results[name] = data
     return results
+def cleaning(val):
+    if val is None:
+        return val
+    if isinstance(val, (int, float)):
+        return float(val)
+    return float(str(val).replace("$", "").strip())
+
 
 def main():
     """
@@ -37,6 +44,8 @@ def main():
     args = parser.parse_args()
 
     data = process_directory(args.dirpath)
+    for _, info in data.items():
+        info["amount"]=cleaning(info["amount"])
     if args.print:
         print(json.dumps(data, indent=2))
 
