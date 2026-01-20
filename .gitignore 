@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# Generated docs
+docs/
+
+# Receipts (input data)
+receipts/
+
+# macOS
+.DS_Store
+
